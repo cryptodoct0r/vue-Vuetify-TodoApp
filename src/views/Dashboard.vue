@@ -4,17 +4,23 @@
 
     <v-container>
       <v-layout row class="mb-3">
-        <v-btn @click="sortBy('title')" small flat color="grey">
-          <v-icon>folder</v-icon>
-          <span class="caption text-lowercase">by project name</span>
-        </v-btn>
-        <v-btn @click="sortBy('person')" small flat color="grey">
-          <v-icon>person</v-icon>
-          <span class="caption text-lowercase">
-            by project
-            <i class="fas fa-person-booth"></i>
-          </span>
-        </v-btn>
+        <v-tooltip top>
+          <v-btn @click="sortBy('title')" small flat color="grey" slot="activator">
+            <v-icon>folder</v-icon>
+            <span class="caption text-lowercase">by project name</span>
+          </v-btn>
+          <span>Sort project by project name</span>
+        </v-tooltip>
+        <v-tooltip top>
+          <v-btn @click="sortBy('person')" small flat color="grey" slot="activator">
+            <v-icon>person</v-icon>
+            <span class="caption text-lowercase">
+              by project
+              <i class="fas fa-person-booth"></i>
+            </span>
+          </v-btn>
+          <span>Sort project by person</span>
+        </v-tooltip>
       </v-layout>
 
       <v-card v-for="project in projects" :key="project.title">
@@ -51,7 +57,7 @@ export default {
       projects: [
         {
           title: "Design a new website",
-          person: "The Net Ninja",
+          person: "Neni Emmanuel",
           due: "1st Jan 2019",
           status: "ongoing",
           content:
