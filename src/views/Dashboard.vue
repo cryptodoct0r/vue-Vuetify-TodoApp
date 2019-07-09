@@ -3,7 +3,21 @@
     <h1 class="subheading grey--text">Home Page</h1>
 
     <v-container>
-      <v-card class="pa-3" v-for="project in projects" :key="project.title">
+      <v-layout row class="mb-3">
+        <v-btn @click="sortBy('title')" small flat color="grey">
+          <v-icon>folder</v-icon>
+          <span class="caption text-lowercase">by project name</span>
+        </v-btn>
+        <v-btn @click="sortBy('person')" small flat color="grey">
+          <v-icon>person</v-icon>
+          <span class="caption text-lowercase">
+            by project
+            <i class="fas fa-person-booth"></i>
+          </span>
+        </v-btn>
+      </v-layout>
+
+      <v-card v-for="project in projects" :key="project.title">
         <v-layout row wrap :class="`pa-3 project ${project.status}`">
           <v-flex xs12 md6>
             <div class="caption grey--text">Project Title</div>
@@ -18,10 +32,12 @@
             <div>{{project.due}}</div>
           </v-flex>
           <v-flex xs2 sm4 md2>
-            <div class="caption grey--text">Status</div>
-            <div>{{project.status}}</div>
+            <div class="right">
+              <v-chip small :class="`${project.status} white--text caption my-2`">{{project.status}}</v-chip>
+            </div>
           </v-flex>
         </v-layout>
+        <v-divider></v-divider>
       </v-card>
     </v-container>
   </div>
@@ -67,6 +83,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    sortBy(prop) {
+      this.projects.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
+    }
   }
 };
 </script>
@@ -81,6 +102,18 @@ export default {
   }
   &.overdue {
     border-left: 4px solid tomato;
+  }
+}
+
+.v-chip {
+  &.complete {
+    background-color: #3cd1c2;
+  }
+  &.ongoing {
+    background-color: orange;
+  }
+  &.overdue {
+    background-color: tomato;
   }
 }
 </style>
