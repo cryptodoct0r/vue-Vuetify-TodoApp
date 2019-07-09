@@ -2,56 +2,86 @@
   <div class="home">
     <h1 class="subheading grey--text">Home Page</h1>
 
-    <v-container grid-list-xs>
-      <p
-        class="red white--text"
-      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolor non totam, mollitia perspiciatis officia et. Dicta repudiandae nemo enim cupiditate odit quo cum, doloremque rerum expedita excepturi, velit obcaecati.</p>
-      <p
-        class="pink lighten-4 red--text text--darken-4"
-      >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, magnam.</p>
-      <h1 class="display-4">Massive Display</h1>
-      <h2 class="display-3">Smaller size</h2>
-      <h3 class="display-2">A bit smaller</h3>
-
-      <v-btn class="pink darken-2 white--text">Click Me</v-btn>
-      <v-btn depressed color="pink">Click agian</v-btn>
-      <v-btn flat color="pink">Click Flat</v-btn>
-
-      <v-btn depressed class="pink white--text btn">
-        <v-icon left>email</v-icon>
-        <span>Email Me</span>
-      </v-btn>
-
-      <v-btn depressed small class="pink white--text btn">
-        <v-icon left small>email</v-icon>
-        <span>Email Me</span>
-      </v-btn>
-
-      <v-btn depressed large class="pink white--text btn">
-        <span>Email Me</span>
-        <v-icon right large>email</v-icon>
-      </v-btn>
-
-      <v-btn fab depressed small dark color="purple">
-        <v-icon small>favorite</v-icon>
-      </v-btn>
-
-      <v-btn class="hidden-sm-and-down" fab depressed small dark color="purple">
-        <v-icon small>favorite</v-icon>
-      </v-btn>
+    <v-container>
+      <v-card class="pa-3" v-for="project in projects" :key="project.title">
+        <v-layout row wrap :class="`pa-3 project ${project.status}`">
+          <v-flex xs12 md6>
+            <div class="caption grey--text">Project Title</div>
+            <div>{{project.title}}</div>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <div class="caption grey--text">person</div>
+            <div>{{project.person}}</div>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <div class="caption grey--text">Due By</div>
+            <div>{{project.due}}</div>
+          </v-flex>
+          <v-flex xs2 sm4 md2>
+            <div class="caption grey--text">Status</div>
+            <div>{{project.status}}</div>
+          </v-flex>
+        </v-layout>
+      </v-card>
     </v-container>
   </div>
 </template>
 
 <script>
 export default {
-  components: {}
+  components: {},
+  data() {
+    return {
+      projects: [
+        {
+          title: "Design a new website",
+          person: "The Net Ninja",
+          due: "1st Jan 2019",
+          status: "ongoing",
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
+        },
+        {
+          title: "Code up the homepage",
+          person: "Chun Li",
+          due: "10th Jan 2019",
+          status: "complete",
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
+        },
+        {
+          title: "Design video thumbnails",
+          person: "Ryu",
+          due: "20th Dec 2018",
+          status: "complete",
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
+        },
+        {
+          title: "Create a community forum",
+          person: "Gouken",
+          due: "20th Oct 2018",
+          status: "overdue",
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!"
+        }
+      ]
+    };
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.btn {
-  border-radius: 20px;
+.project {
+  &.complete {
+    border-left: 4px solid #3cd1c2;
+  }
+  &.ongoing {
+    border-left: 4px solid orange;
+  }
+  &.overdue {
+    border-left: 4px solid tomato;
+  }
 }
 </style>
 
