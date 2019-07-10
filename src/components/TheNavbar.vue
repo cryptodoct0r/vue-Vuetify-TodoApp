@@ -1,5 +1,9 @@
 <template>
   <nav>
+    <v-snackbar v-model="snackbar" top color="success" :timeout="4000">
+      <span>That's Awesome just added a new Project</span>
+      <v-btn flat color="white" @click="snackbar = false">close</v-btn>
+    </v-snackbar>
     <v-toolbar app>
       <v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title class="text-uppercase">
@@ -35,7 +39,7 @@
           <p class="white--text subheading my-2">Neni Emsu</p>
         </v-flex>
         <v-flex class="my-1">
-          <ThePopUp />
+          <ThePopUp @projectAdded="snackbar = true" />
         </v-flex>
       </v-layout>
       <v-list>
@@ -75,7 +79,8 @@ export default {
           text: "Team",
           route: "/team"
         }
-      ]
+      ],
+      snackbar: true
     };
   }
 };
