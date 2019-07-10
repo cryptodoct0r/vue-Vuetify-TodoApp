@@ -8,8 +8,8 @@
       <v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title class="text-uppercase">
         <router-link class="black--text" to="/">
-          <span class="font-weight-light">Todo</span>
-          <Span>App</Span>
+          <span class="font-weight-light">Nugs</span>
+          <Span>Ternopil</Span>
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -26,19 +26,22 @@
         </v-list>
       </v-menu>
 
-      <v-btn flat color="grey">
-        <span>Sign Out</span>
-        <v-icon right>exit_to_app</v-icon>
-      </v-btn>
+      <ThePopUp @projectAdded="snackbar = true" />
+
+      <!-- <v-btn flat color="grey">
+         <span>Sign Out</span>
+        <v-icon right>exit_to_app</v-icon> 
+       
+      </v-btn>-->
     </v-toolbar>
 
     <v-navigation-drawer v-model="drawer" class="primary" app>
       <v-layout column align-center>
         <v-flex class="mt-5">
           <v-avatar size="100" class="grey lighten-2">
-            <img src="/avatar-1.png" alt />
+            <img src="/nugslogo.png" alt />
           </v-avatar>
-          <p class="white--text subheading my-2">Neni Emsu</p>
+          <p class="white--text subheading my-2">Nugs Ternopil</p>
         </v-flex>
         <v-flex class="my-1">
           <ThePopUp @projectAdded="snackbar = true" />
@@ -67,19 +70,29 @@ export default {
       drawer: false,
       links: [
         {
-          icon: "dashboard",
-          text: "Dashboard",
+          icon: "home",
+          text: "Home",
           route: "/"
         },
         {
           icon: "folder",
-          text: "My Projects",
-          route: "/projects"
+          text: "Online Libs",
+          route: "/Library"
         },
         {
-          icon: "person",
-          text: "Team",
-          route: "/team"
+          icon: "supervisor_account",
+          text: "Executives",
+          route: "/Executives"
+        },
+        {
+          icon: "collections",
+          text: "Gallery",
+          route: "/Gallery"
+        },
+        {
+          icon: "info",
+          text: "News & Events",
+          route: "/News&Events"
         }
       ],
       snackbar: true

@@ -1,6 +1,6 @@
 <template>
   <div class="team">
-    <h1 class="subheading grey--text">Team page</h1>
+    <h1 class="subheading grey--text">Executives Page</h1>
 
     <v-container grid-list-xs>
       <v-layout row wrap>
@@ -36,15 +36,24 @@ export default {
     return {
       team: [
         {
-          name: "Neni Emsu",
-          role: "Web developer",
+          name: "Sherif Usman",
+          role: "President",
           avatar: "/avatar-1.png"
         },
-        { name: "Ryu", role: "Graphic designer", avatar: "/avatar-2.png" },
-        { name: "Chun Li", role: "Web developer", avatar: "/avatar-3.png" },
         {
-          name: "Gouken",
-          role: "Social media maverick",
+          name: "Ofori Theresa",
+          role: "Vice President",
+          avatar: "/avatar-3.png"
+        },
+        {
+          name: "Nana Something ",
+          role: "Financial Secretary",
+          avatar: "/avatar-2.png"
+        },
+
+        {
+          name: "Nbia Gyang",
+          role: "Socials",
           avatar: "/avatar-4.png"
         },
         { name: "Yoshi", role: "Sales guru", avatar: "/avatar-5.png" }

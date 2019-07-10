@@ -1,6 +1,6 @@
 <template>
   <v-dialog max-width="600px" v-model="dialogToggle">
-    <v-btn slot="activator" color="success">Add a project</v-btn>
+    <v-btn slot="activator" color="success">Apply For Extension</v-btn>
     <v-card>
       <v-card-title>Add a new project</v-card-title>
       <v-card-text>
