@@ -4,15 +4,28 @@
     <v-card>
       <v-card-title>Add a new project</v-card-title>
       <v-card-text>
-        <v-form class="px-3">
-          <v-text-field label="Title" v-model="title" prepend-icon="folder"></v-text-field>
-          <v-textarea label="Information" v-model="info" prepend-icon="edit"></v-textarea>
+        <v-form ref="form" class="px-3">
+          <v-text-field
+            label="Title"
+            :value="title"
+            v-model="title"
+            prepend-icon="folder"
+            :rules="inputRules"
+          ></v-text-field>
+          <v-textarea
+            label="Information"
+            :value="info"
+            v-model="info"
+            prepend-icon="edit"
+            :rules="inputRules"
+          ></v-textarea>
           <v-menu>
             <v-text-field
               :value="formattedDate"
               slot="activator"
               label="Due Date"
               prepend-icon="date_range"
+              :rules="inputRules"
             ></v-text-field>
             <v-date-picker v-model="due"></v-date-picker>
           </v-menu>
@@ -29,13 +42,21 @@ import format from "date-fns/format";
 export default {
   data() {
     return {
-      title: null,
-      info: null,
-      due: null
+      title: "",
+      info: "",
+      due: null,
+      inputRules: [
+        v => !!v || "Title is required",
+        v => v.length >= 3 || "Minimum length is 3 characters"
+      ]
     };
   },
   methods: {
-    submit() {}
+    submit() {
+      if (this.$refs.form.validate()) {
+        console.log(this.title, this.info, this.formattedDate);
+      }
+    }
   },
   computed: {
     formattedDate() {
