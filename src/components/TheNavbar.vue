@@ -7,8 +7,10 @@
     <v-toolbar app>
       <v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title class="text-uppercase">
-        <span class="font-weight-light">Todo</span>
-        <Span>App</Span>
+        <router-link class="black--text" to="/">
+          <span class="font-weight-light">Todo</span>
+          <Span>App</Span>
+        </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
@@ -87,4 +89,7 @@ export default {
 </script>
 
 <style>
+a {
+  text-decoration: none;
+}
 </style>
